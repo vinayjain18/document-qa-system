@@ -132,21 +132,21 @@ def main():
                 type=["pdf"],
                 help="Upload PDF files (max 10MB each)",
             )
-            
-            if st.button("Process Documents", type="primary"):
-                try:
-                    with st.spinner("Processing documents..."):
-                        # Clean up existing DB before processing new documents
-                        cleanup_db()
-                        num_docs = process_documents(uploaded_files)
-                        if num_docs > 0:
-                            st.success(f"✅ Processed {num_docs} document chunks")
-                            st.session_state.docs_processed = True
-                        else:
-                            st.error("No valid documents were processed")
-                except Exception as e:
-                    st.error(f"Error processing documents: {str(e)}")
-                    logger.error(f"Document processing error: {e}")
+            if uploaded_files:
+                if st.button("Process Documents", type="primary"):
+                    try:
+                        with st.spinner("Processing documents..."):
+                            # Clean up existing DB before processing new documents
+                            cleanup_db()
+                            num_docs = process_documents(uploaded_files)
+                            if num_docs > 0:
+                                st.success(f"✅ Processed {num_docs} document chunks")
+                                st.session_state.docs_processed = True
+                            else:
+                                st.error("No valid documents were processed")
+                    except Exception as e:
+                        st.error(f"Error processing documents: {str(e)}")
+                        logger.error(f"Document processing error: {e}")
 
             # Chat history cleanup
             if st.session_state.docs_processed:
