@@ -10,6 +10,10 @@ import tempfile
 import logging
 import warnings
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 # Handle protobuf warnings
 warnings.filterwarnings('ignore', category=UserWarning, message='.*Protobuf.*')
 
