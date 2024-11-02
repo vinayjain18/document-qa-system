@@ -29,7 +29,7 @@ To set up the application locally, follow these steps:
    ```
 
 2. **Install Dependencies**:
-   Ensure you have Python 3.8+ installed. Then, install the required packages:
+   Ensure you have Python 3.10+ installed. Then, install the required packages:
    ```bash
    pip install -r requirements.txt
    ```

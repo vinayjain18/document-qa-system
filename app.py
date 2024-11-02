@@ -8,6 +8,14 @@ import os
 import shutil
 import tempfile
 import logging
+import warnings
+
+# Handle protobuf warnings
+warnings.filterwarnings('ignore', category=UserWarning, message='.*Protobuf.*')
+
+# Set protobuf implementation if not set
+if 'PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION' not in os.environ:
+    os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
