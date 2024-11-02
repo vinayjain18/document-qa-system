@@ -14,7 +14,8 @@ import tempfile
 import logging
 import warnings
 
-
+import chromadb
+chromadb.api.client.SharedSystemClient.clear_system_cache()
 
 # Handle protobuf warnings
 warnings.filterwarnings('ignore', category=UserWarning, message='.*Protobuf.*')
